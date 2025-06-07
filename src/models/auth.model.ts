@@ -26,23 +26,33 @@ const verificationCodeSchema = new Schema<IVerification>({
   createdAt: { type: Date, default: Date.now },
 });
 
+const locationSchema = new Schema<ILocation>(
+  {
+    ip: { type: String, default: null },
+    country: { type: String },
+    flag: { type: String },
+    countryName: { type: String },
+    region: { type: String },
+    city: { type: String },
+    latitude: { type: Number },
+    longitude: { type: Number },
+  },
+  { _id: false }
+);
+
 const userSchema = new Schema<IUser>(
   {
-    accountType: {
-      type: String,
-      enum: ['personal', 'company'], // Account type: user or company
-      required: true,
-    },
+    accountType: { type: String, enum: ['personal', 'company'], required: true },
     firstname: {
       type: String,
       required: function () {
-        return this.accountType === 'personal'; // firstname required only for users
+        return this.accountType === 'personal';
       },
     },
     lastname: {
       type: String,
       required: function () {
-        return this.accountType === 'personal'; // lastname required only for users
+        return this.accountType === 'personal';
       },
     },
     companyname: {
@@ -99,6 +109,7 @@ const userSchema = new Schema<IUser>(
     session: [sessionSchema],
     userPreferences: { type: userPreferencesSchema, default: {} },
     verifications: [verificationCodeSchema],
+    location: { type: locationSchema, required: false },
   },
   { timestamps: true, toJSON: { virtuals: true } }
 );

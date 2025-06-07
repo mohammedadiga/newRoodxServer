@@ -19,6 +19,17 @@ interface IVerification {
   createdAt: Date;
 }
 
+interface ILocation {
+  ip: string | null; // User's IP address
+  country: string; // Country code (e.g. 'US')
+  countryName?: string; // Full country name (optional)
+  flag: string; // URL of the flag image
+  region?: string; // Region or state (optional)
+  city?: string; // City name (optional)
+  latitude?: number; // Latitude coordinate (optional)
+  longitude?: number; // Longitude coordinate (optional)
+}
+
 interface IUser {
   _id: Types.ObjectId;
   accountType: 'personal' | 'company';
@@ -38,4 +49,5 @@ interface IUser {
   session: ISession[];
   userPreferences: IPreferences;
   verifications: IVerification[];
+  location: ILocation;
 }

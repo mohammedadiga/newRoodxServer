@@ -92,8 +92,8 @@ export class AuthService {
   }
 
   // ? Activattion Register user
-  public async activateRegistertion(body: { userAgent: string; activationToken: string; activationCode: string }) {
-    const { activationToken, activationCode, userAgent } = body;
+  public async activateRegistertion(body: { userAgent: string; activationToken: string; activationCode: string; location?: ILocation }) {
+    const { activationToken, activationCode, userAgent, location } = body;
 
     const User = await verifyActivationToken(activationToken, activationCode, 'activation');
     if (!User) throw new UnauthorizedException('Invalid activation link');
@@ -122,6 +122,7 @@ export class AuthService {
       ...User.user,
       email: email || `${username}_email_not_found`,
       phone: phone || `${username}_phone_not_found`,
+      location: location || {},
     };
 
     const user = await UserModel.create(userData);

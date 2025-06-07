@@ -121,6 +121,17 @@ export const registerSchema = z
     }
   });
 
+export const locationZodSchema = z.object({
+  ip: z.string().nullable(),
+  country: z.string().min(2),
+  countryName: z.string().optional(),
+  flag: z.string().url(),
+  region: z.string().optional(),
+  city: z.string().optional(),
+  latitude: z.number().optional(),
+  longitude: z.number().optional(),
+});
+
 export const activateSchema = z.object({
   // Optional userAgent (can be used for tracking device information)
   userAgent: z.string(),
@@ -128,6 +139,8 @@ export const activateSchema = z.object({
   activationCode: activationCode,
   // Required activation token: Cannot be empty
   activationToken: z.string().min(1, { message: 'Activation token is required' }),
+
+  location: locationZodSchema.optional(),
 });
 
 export const loginSchema = z.object({
