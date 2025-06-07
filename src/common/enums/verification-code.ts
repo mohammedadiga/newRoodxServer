@@ -1,0 +1,7 @@
+const enum verificationEnum {
+  EMAIL_VERIFICATION = 'EMAIL_VERIFICATION',
+  PASSWORD_RESET = 'PASSWORD_RESET',
+  PASSWORD_VERIFIED = 'PASSWORD_VERIFIED',
+}
+
+export { verificationEnum };

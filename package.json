@@ -2,30 +2,43 @@
   "name": "roodx_server",
   "version": "1.0.0",
   "module": "index.ts",
-  "type": "module",
+  "author": "Mohammed Younes",
+  "license": "ISC",
+  "description": "",
   "scripts": {
     "start": "bun run src/index.ts",
     "dev": "bun --watch --respawn --transpile-only --files src/index.ts",
     "build": "bun build src/index.ts --outdir dist"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/bun": "latest",
+    "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
-    "@types/morgan": "^1.9.9"
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/morgan": "^1.9.9",
+    "@types/passport": "^1.0.17",
+    "@types/passport-jwt": "^4.0.1"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
+    "ioredis": "^5.6.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.1",
     "morgan": "^1.10.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "uuid": "^11.1.0",
     "zod": "^3.25.51"
   }
 }
